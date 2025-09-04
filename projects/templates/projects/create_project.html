@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create New Project</title>
+  <style>
+    body { font-family: sans-serif; margin: 40px; }
+    form { margin-bottom: 20px; }
+    button { padding: 6px 12px; }
+    a { display: inline-block; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h2>Create a New Project</h2>
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Project</button>
+  </form>
+
+  <a href="{% url 'project_index' %}">← Back to Project List</a>
+</body>
+</html>
+{% endblock %}

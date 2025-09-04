@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Projects</h2>
+<a class="create" href="{% url 'create_project_view' %}">+ Create New Project</a> 
+
+<div class="row">
+{% for project in projects %}
+    <div class="col-md-4">
+        <div class="card mb-2">
+            {% if project.image %}
+                <img class="card-img-top" src="{{ project.image.url }}" width=700>
+            {% endif %}
+            <div class="card-body">
+                <h4 class="card-title">{{ project.title }}</h4>
+                <p class="card-text">{{ project.description }}</p>
+                <a href="{% url 'project_detail' project.pk %}"
+                class="btn btn-primary">
+                    Read More
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+
+
+
